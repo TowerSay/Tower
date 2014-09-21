@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SceneRealTimeManager\MapSRTM.cs">
+    <Files>
+      <File FileName="Assets\Scripts\SceneRealTimeManager\MapSRTM.cs" Line="134" Column="6" />
+      <File FileName="..\..\43  2D\Assets\SCLSD.cs" Line="364" Column="1" />
+      <File FileName="Assets\Scripts\PrefabControl\RoomNodeCtl.cs" Line="14" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
