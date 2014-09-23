@@ -12,7 +12,7 @@ public class PrefsSaveManager
 		path=Game.DataPath("PrefSave/"+name);
 
 
-
+		/*
 #if UNITY_ANDROID
 		string filepath = Application.dataPath + "!/assets/" + path;
 		if(!File.Exists(filepath))
@@ -41,6 +41,7 @@ public class PrefsSaveManager
 		}
 
 		//Game.CheckCopyAndroidPath(path);
+		*/
 	}
 
 	public void Set(string key,string value)
