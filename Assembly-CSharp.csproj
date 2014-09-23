@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{4D9C92C7-9122-6925-4EAF-4BE212FFBB35}</ProjectGuid>
+	<ProjectGuid>{064B227D-FA25-2911-0284-648CB0196CE0}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_4_6_0;UNITY_4_6;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_0;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -191,6 +191,7 @@
      <Compile Include="Assets\SGame\Scripts\DefBoxCtl.cs" />
      <Compile Include="Assets\SGame\Scripts\EffectControl.cs" />
      <Compile Include="Assets\SGame\Scripts\Game.cs" />
+     <Compile Include="Assets\SGame\Scripts\GameStruct.cs" />
      <Compile Include="Assets\SGame\Scripts\PrefsSaveManager.cs" />
      <Compile Include="Assets\SGame\Scripts\RealTimeManager.cs" />
      <Compile Include="Assets\SGame\Scripts\ResManager.cs" />
@@ -243,25 +244,25 @@
  <HintPath>E:/FastTools/Unity/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data">
- <HintPath>D:/Unity3d/2014/Tower/Assets/Plugins/Mono.Data.dll</HintPath>
+ <HintPath>D:/Unity3d/TWR/Assets/Plugins/Mono.Data.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.Sqlite">
- <HintPath>D:/Unity3d/2014/Tower/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+ <HintPath>D:/Unity3d/TWR/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.SqliteClient">
- <HintPath>D:/Unity3d/2014/Tower/Assets/Plugins/Mono.Data.SqliteClient.dll</HintPath>
+ <HintPath>D:/Unity3d/TWR/Assets/Plugins/Mono.Data.SqliteClient.dll</HintPath>
  </Reference>
  <Reference Include="System.Configuration">
- <HintPath>D:/Unity3d/2014/Tower/Assets/Plugins/System.Configuration.dll</HintPath>
- </Reference>
- <Reference Include="System.Data">
- <HintPath>D:/Unity3d/2014/Tower/Assets/Plugins/System.Data.dll</HintPath>
+ <HintPath>D:/Unity3d/TWR/Assets/Plugins/System.Configuration.dll</HintPath>
  </Reference>
  <Reference Include="System.EnterpriseServices">
- <HintPath>D:/Unity3d/2014/Tower/Assets/Plugins/System.EnterpriseServices.dll</HintPath>
+ <HintPath>D:/Unity3d/TWR/Assets/Plugins/System.EnterpriseServices.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Data">
+ <HintPath>D:/Unity3d/TWR/Assets/Plugins/System.Data.dll</HintPath>
  </Reference>
  <Reference Include="System.Security">
- <HintPath>D:/Unity3d/2014/Tower/Assets/Plugins/System.Security.dll</HintPath>
+ <HintPath>D:/Unity3d/TWR/Assets/Plugins/System.Security.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
