@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class NodeConnect
+
+public struct NodeConnect
 {
 	public enum TYPE
 	{
@@ -11,8 +12,10 @@ public class NodeConnect
 		UP,
 		DOWN
 	}
+
 	public Point id;
-	public TYPE type;//true=right / false=down
+	public TYPE type;
+
 	public NodeConnect(Point id,TYPE type)
 	{
 		this.id=id;
@@ -25,7 +28,6 @@ public class NodeConnect
 		this.type=type;
 	}
 }
-
 
 public class MapSRTM : MonoBehaviour 
 {
@@ -244,7 +246,7 @@ public class MapSRTM : MonoBehaviour
 		float mdx=(mapSize.x*0.5f);
 		float mdy=(mapSize.y*0.5f);
 
-		//最右边和最下边
+		//最右边和最下边 索引
 		int l_x=mapSize.x-1;
 		int l_y=mapSize.y-1;
 

@@ -13,7 +13,6 @@ public class ActControlFourFace : MonoBehaviour
 		IDLE,
 		MOVE,
 		RUN,
-
 	}
 
 	public enum FACE

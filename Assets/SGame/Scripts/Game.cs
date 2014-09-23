@@ -13,16 +13,15 @@ using System.IO;
 	比如: SpriteRenderer -> spriteRenderer 
 	
 3 特别：具备强区分价值的使用下划线表示： 名称缩写(小写)_类型缩写(小写)  
-	比如: res_rnc_lstt -> 资源_链表
+	比如: res_rnc_lst -> 资源_链表
 	比如: spt_ary -> 精灵_数组
 	比如: obj_dic -> 物体_字典
 */
 
 public static class Game
 {
-
-	static Dictionary<string,ResManager> resManager=new Dictionary<string, ResManager>();
-	static Dictionary<string,PrefsSaveManager> prefsManager=new Dictionary<string, PrefsSaveManager>();
+	private static Dictionary<string,ResManager> resManager=new Dictionary<string, ResManager>();
+	private static Dictionary<string,PrefsSaveManager> prefsManager=new Dictionary<string, PrefsSaveManager>();
 
 	/// <summary>供编辑器使用_资源管理器</summary>
 	public static ResManager ERM=new ResManager("Assets/SGame/Editor/SysRes/",false);
@@ -101,7 +100,7 @@ public static class Game
 		RTM.audio_source.Play();
 	}
 
-	/// <summary> 检查安卓path文件，进行拷贝	 </summary>
+	/// <summary> 检查安卓path文件，进行拷贝</summary>
 	public static void CheckCopyAndroidPath(string path)
 	{
 		if(Application.platform==RuntimePlatform.Android)
@@ -157,37 +156,13 @@ public static class Game
 
 }
 
-/// <summary>通用点结构</summary>
-public struct Point
-{
-	public int x,y;
-	public Point(int x=0,int y=0)
-	{
-		this.x=x;
-		this.y=y;
-	}
 
-	public string ToString()
-	{
-		return "("+x+","+y+")";
-	}
-
-	public static bool operator ==(Point a, Point b)
-	{
-		return (a.x==b.x && a.y==b.y);
-	}
-
-	public static bool operator !=(Point a, Point b)
-	{
-		return (a.x!=b.x || a.y!=b.y);
-	}
-}
 
 
 /// <summary>游戏帮助类(提供额外的常用接口)</summary>
 public static class GameHelp
 {
-	/// <summary>取随机数</summary>
+	/// <summary>取随机整数</summary>
 	static public int Random (int min, int max)
 	{
 		if (min == max) return min;
@@ -200,7 +175,7 @@ public static class GameHelp
 		return (UnityEngine.Random.Range(0, 2)==1);
 	}
 
-	/// <summary>取随机数</summary>
+	/// <summary>取随机小数</summary>
 	static public float Random (float min, float max)
 	{
 		if (min == max) return min;

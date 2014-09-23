@@ -12,11 +12,6 @@ public class RoomNodeCtl : MonoBehaviour
 	UILabel _typeLabel;
 	public int depth=-1;
 
-	void Start () 
-	{
-
-	}
-
 	void Update () 
 	{
 		idLabel.text=id.x+","+id.y;
