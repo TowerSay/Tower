@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class CharaCtlFourFace : MonoBehaviour
 {
+
 	UI2DSprite _spt;
 	AimMove _aimMove;
 	RigBoxCtl _rbc;
@@ -14,6 +15,8 @@ public class CharaCtlFourFace : MonoBehaviour
 
 	public FACE face;
 	public float angle;
+
+	public Transform aim;
 
 	public SpriteClipPack scp; 
 	public Point id;
@@ -68,9 +71,9 @@ public class CharaCtlFourFace : MonoBehaviour
 	
 	void Start () 
 	{
-		Game.CreateSpriteClipPack("Actor1",new Point(32,32));
+
 		scp=Game.GetSpriteClipPack("Actor1");
-		id=new Point(1,1);
+
 	}
 
 	///<summary>面向ID<summary>
@@ -117,9 +120,15 @@ public class CharaCtlFourFace : MonoBehaviour
 	{
 		spt.depth=-(int)transform.localPosition.y;
 
+
+
 		if(!aimMove.move)
 		{
-			aimMove.Aim(transform.localPosition+new Vector3(Random.Range(-50,50),Random.Range(-50,50),0),true);
+			if(aim!=null)
+			{
+				aimMove.Aim(aim.localPosition,true);
+			}
+			else aimMove.Aim(transform.localPosition+new Vector3(Random.Range(-50,50),Random.Range(-50,50),0),true);
 			//aimMove.Aim(new Vector3(0,0,0),true);
 		}
 		else
