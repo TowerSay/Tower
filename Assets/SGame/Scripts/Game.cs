@@ -84,6 +84,9 @@ public static class Game
 	/// <summary> 取精灵</summary>
 	public static Sprite Spt(string name){return ORM("Spt","Sprite").Spt(name);}
 
+	/// <summary> 取纹理</summary>
+	public static Texture2D Tex(string name){return ORM("Tex","Texture").Res<Texture2D>(name);}
+
 
 	//以下常用在场景中的方法---------------------------------------------
 
@@ -154,6 +157,75 @@ public static class Game
 	public static float WorldScale(float value){return value*worldTimeScale;}
 
 
+	//资源处理-----------------------------------------------------------
+
+	private static Dictionary<string,SpriteClipPack> dic_scp=new Dictionary<string, SpriteClipPack>();
+
+	/// <summary> 添加一个精灵包</summary>
+	public static void CreateSpriteClipPack(string pack_name,Point size)
+	{
+		if(!dic_scp.ContainsKey(pack_name))
+		{
+			dic_scp.Add(pack_name,new SpriteClipPack(pack_name,size));
+		}
+	}
+
+	public static SpriteClipPack GetSpriteClipPack(string pack_name)
+	{
+		return dic_scp[pack_name];
+	}
+
+	/// <summary> 在精灵包中取精灵</summary>
+	public static Sprite Spt(string pack_name,Point id)
+	{
+		if(!dic_scp.ContainsKey(pack_name))
+		{
+			Debug.Log("不存在该精灵包!请先用CreateSpriteClipPack函数添加该包");
+			return null;
+		}
+		return dic_scp[pack_name].spts[id];
+	}
+
+
+	/// <summary>按大小裁剪精灵包,由Point进行索引 最小下标(1,1) </summary>
+	public static Dictionary<Point,Sprite> ClipFromMainTexture(Texture2D tex,Point size)
+	{
+		Dictionary<Point,Sprite> dic_ps=new Dictionary<Point, Sprite>();
+		int w_size=tex.width/size.x;
+		int h_size=tex.height/size.y;
+
+		//Transform root=GameObject.Find("UI Root").transform;
+
+		for(int i=0;i<w_size;i++)
+		{
+			for(int o=0;o<h_size;o++)
+			{
+				Rect rect=new Rect(size.x*i,size.y*(h_size-o-1),size.x,size.y);
+				Sprite _spt=Sprite.Create(tex,rect,new Vector2(0.5f,0.5f));
+				dic_ps.Add(new Point(i+1,o+1),_spt);
+
+				/*
+				GameObject go=GameObject.Instantiate(Game.RObj("2DSPT")) as GameObject;
+				UI2DSprite spt=go.GetComponent<UI2DSprite>();
+				spt.sprite2D=_spt;
+				go.transform.parent=root;
+				go.transform.localScale=Vector3.one;
+				spt.width=size.x;
+				spt.height=size.y;
+				go.transform.localPosition=new Vector3(i*size.x,o*size.y,0);*/
+			}
+		}
+
+		return dic_ps;
+	}
+
+	public static T Instantiate<T>(Object obj)where T : Component
+	{
+		GameObject go=GameObject.Instantiate(obj) as GameObject;
+		return go.GetComponent(typeof(T)) as T;
+	}
+
+
 }
 
 
@@ -168,6 +240,8 @@ public static class GameHelp
 		if (min == max) return min;
 		return UnityEngine.Random.Range(min, max + 1);
 	}
+
+
 
 	/// <summary>取随机ture/false</summary>
 	static public bool Random ()

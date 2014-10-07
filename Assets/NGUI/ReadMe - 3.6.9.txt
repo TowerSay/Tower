@@ -1,7 +1,7 @@
 ----------------------------------------------
             NGUI: Next-Gen UI kit
  Copyright © 2011-2014 Tasharen Entertainment
-            Version 3.6.9
+            Version 3.7.2
     http://www.tasharen.com/?page_id=197
             support@tasharen.com
 ----------------------------------------------
@@ -54,6 +54,53 @@ and it will not be included in the build of your game. It's only used in the edi
 -----------------
  Version History
 -----------------
+
+3.7.2
+- NEW: You can now explicitly choose the panel used as a drag region for UIDragObject.
+- NEW: You can now specify a custom thumbnail texture for each item in the prefab toolbar.
+- NEW: TweenAlpha and TweenColor now work on Unity's SpriteRenderers.
+- NEW: Added UICamera.currentTouch.deltaTime (time since touch started).
+- FIX: UIGrid.Reposition should now work even without the component being started first.
+- FIX: Widgets with alpha 0 won't be selectable in the scene view anymore.
+- FIX: UIDragDropItem wasn't setting 'dragged' state properly if the item was cloned.
+- FIX: Alpha text encoding [Aa] style should no longer try to interpret non-hex characters.
+- FIX: Tweaks to how UICenterOnChild works and fixes to its paging functionality.
+- FIX: Minor fix to tween/play tween in regards to playing in reverse.
+- FIX: Bitmap labels now support thin spaces (U2009).
+- FIX: PropertyBinding now respects "editMode" flag properly.
+- FIX: Setting UILabel.material at run time on a dynamic font should now work as expected.
+- FIX: DX9 half pixel offset will now be ignored properly in /force OpenGL mode.
+- FIX: You should now be able to use the stylus on android devices.
+- DEL: UIInput.selectOnTab is now deprecated in favor of UIKeyNavigation (will auto-upgrade)
+
+3.7.1
+- NEW: Added generic delegates to UICamera you can subscribe to (onClick, onHover, etc) to replace the genericEventHandler.
+- NEW: Added a new option to UITexture and UI2DSprite to keep the original texture's aspect ratio.
+- NEW: Popup list items can now have arbitrary data associated with each entry.
+- NEW: You can now choose what kind of click will open the popup list.
+- NEW: New text symbol [c] will cause the text that follows it to ignore the label's color tint.
+- NEW: Added the missing OnDragStart and OnDragEnd to UIEventListener.
+- NEW: UICamera.onMouseMove notification.
+- FIX: UICamera will only send events to rigidbodies if there was no UIPanel present.
+- FIX: UIPanel will no longer use handles if the camera drawing it is not 2D.
+- FIX: Unity 4.3 compatibility.
+
+3.7.0
+- NEW: You can now set UIWidget.onRender to change material properties like in OnWillRenderObject.
+- NEW: Changing UITexture.mainTexture and shader is now super-quick if it's not batched.
+- NEW: UIRoot now has additional scaling constraints enabling new fill and fit modes.
+- NEW: Added the ability to ignore kerning information when making bitmap fonts.
+- NEW: NGUI's events sent via "3D" and "2D" event type UICameras will now go to the rigidbody instead of colliders.
+- NEW: UIKeyBinding now has a new setting "All" that will trigger both select and press/click logic.
+- NEW: UICamera.isOverUI, UICamera.currentTouch.isOverUI.
+- NEW: NGUI now uses the new rect transform tool instead of the move transform in Unity 4.6+.
+- NEW: UIPlaySound now has an OnEnable play option. For convenience.
+- NEW: UIEventListener now has OnTooltip.
+- NEW: TweenAlpha now works with renderers as well.
+- FIX: Removed code that was snapping draw call positions to pixels, allowing you animate panels smoothly.
+- FIX: Calling Reposition() on the grid and table now works even if its Start() hasn't executed.
+- FIX: Dynamic font baseline calculation work-around for some partial fonts.
+- FIX: Center On Child script got semi-broken in the last version.
 
 3.6.9
 - NEW: Added loop, play, pause and reset functionality to UI2DSpriteAnimation.

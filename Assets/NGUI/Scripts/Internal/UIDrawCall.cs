@@ -41,6 +41,7 @@ public class UIDrawCall : MonoBehaviour
 		ConstrainButDontClip = 4,	// No actual clipping, but does have an area
 	}
 
+	[HideInInspector][System.NonSerialized] public int widgetCount = 0;
 	[HideInInspector][System.NonSerialized] public int depthStart = int.MaxValue;
 	[HideInInspector][System.NonSerialized] public int depthEnd = int.MinValue;
 	[HideInInspector][System.NonSerialized] public UIPanel manager;
@@ -52,7 +53,7 @@ public class UIDrawCall : MonoBehaviour
 	[HideInInspector][System.NonSerialized] public BetterList<Vector2> uvs = new BetterList<Vector2>();
 	[HideInInspector][System.NonSerialized] public BetterList<Color32> cols = new BetterList<Color32>();
 
-	Material		mMaterial;		// Material used by this screen
+	Material		mMaterial;		// Material used by this draw call
 	Texture			mTexture;		// Main texture used by the material
 	Shader			mShader;		// Shader used by the dynamically created material
 	int				mClipCount = 0;	// Number of times the draw call's content is getting clipped
@@ -74,6 +75,14 @@ public class UIDrawCall : MonoBehaviour
 
 	[System.NonSerialized]
 	public bool isDirty = false;
+
+	public delegate void OnRenderCallback (Material mat);
+
+	/// <summary>
+	/// Callback that will be triggered at OnWillRenderObject() time.
+	/// </summary>
+
+	public OnRenderCallback onRender;
 
 	/// <summary>
 	/// Render queue used by the draw call.
@@ -282,6 +291,7 @@ public class UIDrawCall : MonoBehaviour
 		if (mMaterial != null)
 		{
 			mDynamicMat = new Material(mMaterial);
+			mDynamicMat.name = "[NGUI] " + mMaterial.name;
 			mDynamicMat.hideFlags = HideFlags.DontSave | HideFlags.NotEditable;
 			mDynamicMat.CopyPropertiesFromMaterial(mMaterial);
 #if !UNITY_FLASH
@@ -302,6 +312,7 @@ public class UIDrawCall : MonoBehaviour
 		else
 		{
 			mDynamicMat = new Material(shader);
+			mDynamicMat.name = "[NGUI] " + shader.name;
 			mDynamicMat.hideFlags = HideFlags.DontSave | HideFlags.NotEditable;
 		}
 	}
@@ -352,8 +363,9 @@ public class UIDrawCall : MonoBehaviour
 	/// Set the draw call's geometry.
 	/// </summary>
 
-	public void UpdateGeometry ()
+	public void UpdateGeometry (int widgetCount)
 	{
+		this.widgetCount = widgetCount;
 		int count = verts.size;
 
 		// Safety check to ensure we get valid values
@@ -374,7 +386,7 @@ public class UIDrawCall : MonoBehaviour
 				{
 					mMesh = new Mesh();
 					mMesh.hideFlags = HideFlags.DontSave;
-					mMesh.name = (mMaterial != null) ? mMaterial.name : "Mesh";
+					mMesh.name = (mMaterial != null) ? "[NGUI] " + mMaterial.name : "[NGUI] Mesh";
 					mMesh.MarkDynamic();
 					setIndices = true;
 				}
@@ -537,6 +549,7 @@ public class UIDrawCall : MonoBehaviour
 	{
 		UpdateMaterials();
 
+		if (onRender != null) onRender(mDynamicMat ?? mMaterial);
 		if (mDynamicMat == null || mClipCount == 0) return;
 
 		if (!mLegacyShader)
@@ -647,10 +660,11 @@ public class UIDrawCall : MonoBehaviour
 		mMaterial = null;
 		mTexture = null;
 
-		NGUITools.DestroyImmediate(mDynamicMat);
-		mDynamicMat = null;
 		if (mRenderer != null)
 			mRenderer.sharedMaterials = new Material[] {};
+
+		NGUITools.DestroyImmediate(mDynamicMat);
+		mDynamicMat = null;
 	}
 
 	/// <summary>
@@ -660,6 +674,7 @@ public class UIDrawCall : MonoBehaviour
 	void OnDestroy ()
 	{
 		NGUITools.DestroyImmediate(mMesh);
+		mMesh = null;
 	}
 
 	/// <summary>
@@ -798,6 +813,8 @@ public class UIDrawCall : MonoBehaviour
 	{
 		if (dc)
 		{
+			dc.onRender = null;
+
 			if (Application.isPlaying)
 			{
 				if (mActiveList.Remove(dc))

@@ -1600,6 +1600,7 @@ public static class NGUIEditorTools
 			for (int b = 0; b < p.widgets.Count; ++b)
 			{
 				UIWidget w = p.widgets[b];
+				if (!w.isVisible) continue;
 				Vector3[] corners = w.worldCorners;
 				if (SceneViewDistanceToRectangle(corners, mousePos) == 0f)
 					list.Add(w);
@@ -1705,7 +1706,12 @@ public static class NGUIEditorTools
 	static public void HideMoveTool (bool hide)
 	{
 #if !UNITY_4_3
-		UnityEditor.Tools.hidden = hide && (UnityEditor.Tools.current == UnityEditor.Tool.Move) &&
+		UnityEditor.Tools.hidden = hide &&
+ #if !UNITY_4_5
+			(UnityEditor.Tools.current == UnityEditor.Tool.Rect) &&
+ #else
+			(UnityEditor.Tools.current == UnityEditor.Tool.Move) &&
+ #endif
 			UIWidget.showHandlesWithMoveTool && !NGUISettings.showTransformHandles;
 #endif
 	}

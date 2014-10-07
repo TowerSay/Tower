@@ -16,7 +16,7 @@ public class RealTimeManager : MonoBehaviour
 	//	t=new Thread(Program.Init);
 	//	t.Start();
 		//StartCoroutine(PRI());
-		GameObject.DontDestroyOnLoad(this);
+		GameObject.DontDestroyOnLoad(this.gameObject);
 		//Game.PlaySound("Bell1");
 
 		DbAccess.OpenDB("Db.db");

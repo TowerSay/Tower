@@ -29,7 +29,7 @@ public struct NodeConnect
 	}
 }
 
-public class MapSRTM : MonoBehaviour 
+public class MapSRTM : SRTMBase 
 {
 	Transform _nodeRoot;
 	List<RoomNodeCtl> rnc_lst=new List<RoomNodeCtl>();

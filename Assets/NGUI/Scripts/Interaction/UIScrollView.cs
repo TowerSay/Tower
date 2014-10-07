@@ -349,16 +349,9 @@ public class UIScrollView : MonoBehaviour
 		}
 	}
 
-	void OnEnable () { list.Add(this); }
-	void OnDisable () { list.Remove(this); }
-
-	/// <summary>
-	/// Set the initial drag value and register the listener delegates.
-	/// </summary>
-
-	protected virtual void Start ()
+	void OnEnable ()
 	{
-		//UpdatePosition();
+		list.Add(this);
 
 		if (Application.isPlaying)
 		{
@@ -375,6 +368,8 @@ public class UIScrollView : MonoBehaviour
 			}
 		}
 	}
+
+	void OnDisable () { list.Remove(this); }
 
 	/// <summary>
 	/// Restrict the scroll view's contents to be within the scroll view's bounds.
@@ -706,6 +701,8 @@ public class UIScrollView : MonoBehaviour
 
 	public void Press (bool pressed)
 	{
+		if (UICamera.currentScheme == UICamera.ControlScheme.Controller) return;
+
 		if (smoothDragStart && pressed)
 		{
 			mDragStarted = false;
@@ -772,6 +769,8 @@ public class UIScrollView : MonoBehaviour
 
 	public void Drag ()
 	{
+		if (UICamera.currentScheme == UICamera.ControlScheme.Controller) return;
+
 		if (enabled && NGUITools.GetActive(gameObject) && mShouldMove)
 		{
 			if (mDragID == -10) mDragID = UICamera.currentTouchID;
@@ -949,7 +948,12 @@ public class UIScrollView : MonoBehaviour
 				{
 					if (NGUITools.GetActive(centerOnChild))
 					{
-						centerOnChild.Recenter();
+						if (centerOnChild.nextPageThreshold != 0f)
+						{
+							mMomentum = Vector3.zero;
+							mScroll = 0f;
+						}
+						else centerOnChild.Recenter();
 					}
 					else
 					{

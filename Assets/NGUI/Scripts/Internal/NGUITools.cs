@@ -210,7 +210,7 @@ static public class NGUITools
 		cam = Camera.main;
 		if (cam && (cam.cullingMask & layerMask) != 0) return cam;
 
-#if UNITY_4_3
+#if UNITY_4_3 || UNITY_FLASH
 		Camera[] cameras = NGUITools.FindActive<Camera>();
 		for (int i = 0, imax = cameras.Length; i < imax; ++i)
 #else
@@ -636,7 +636,24 @@ static public class NGUITools
 
 	static public void NormalizeWidgetDepths ()
 	{
-		UIWidget[] list = FindActive<UIWidget>();
+		NormalizeWidgetDepths(FindActive<UIWidget>());
+	}
+
+	/// <summary>
+	/// Normalize the depths of all the widgets in the scene, making them start from 0 and remain in order.
+	/// </summary>
+
+	static public void NormalizeWidgetDepths (GameObject go)
+	{
+		NormalizeWidgetDepths(go.GetComponentsInChildren<UIWidget>());
+	}
+
+	/// <summary>
+	/// Normalize the depths of all the widgets in the scene, making them start from 0 and remain in order.
+	/// </summary>
+
+	static public void NormalizeWidgetDepths (UIWidget[] list)
+	{
 		int size = list.Length;
 
 		if (size > 0)
@@ -755,12 +772,12 @@ static public class NGUITools
 			if (advanced3D)
 			{
 				go.name = "UI Root (3D)";
-				root.scalingStyle = UIRoot.Scaling.FixedSize;
+				root.scalingStyle = UIRoot.Scaling.Constrained;
 			}
 			else
 			{
 				go.name = "UI Root";
-				root.scalingStyle = UIRoot.Scaling.PixelPerfect;
+				root.scalingStyle = UIRoot.Scaling.Flexible;
 			}
 		}
 
@@ -940,7 +957,9 @@ static public class NGUITools
 	static public T FindInParents<T> (GameObject go) where T : Component
 	{
 		if (go == null) return null;
-#if UNITY_4_3
+		// Commented out because apparently it causes Unity 4.5.3 to lag horribly:
+		// http://www.tasharen.com/forum/index.php?topic=10882.0
+//#if UNITY_4_3
  #if UNITY_FLASH
 		object comp = go.GetComponent<T>();
  #else
@@ -961,9 +980,9 @@ static public class NGUITools
  #else
 		return comp;
  #endif
-#else
-		return go.GetComponentInParent<T>();
-#endif
+//#else
+//		return go.GetComponentInParent<T>();
+//#endif
 	}
 
 	/// <summary>
