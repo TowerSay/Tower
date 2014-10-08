@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CharaCtlFourFace.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
@@ -187,6 +186,7 @@
      <Compile Include="Assets\SGame\Scripts\AnimatorControlHelp.cs" />
      <Compile Include="Assets\SGame\Scripts\AtkBoxCtl.cs" />
      <Compile Include="Assets\SGame\Scripts\CharaActControl.cs" />
+     <Compile Include="Assets\SGame\Scripts\CharaCtlFourFace.cs" />
      <Compile Include="Assets\SGame\Scripts\CharaInfo.cs" />
      <Compile Include="Assets\SGame\Scripts\DbAccess.cs" />
      <Compile Include="Assets\SGame\Scripts\DefBoxCtl.cs" />
@@ -215,6 +215,7 @@
      <Compile Include="Assets\Scripts\SceneRealTimeManager\MapSRTM.cs" />
      <Compile Include="Assets\Scripts\SceneRealTimeManager\SRTMBase.cs" />
      <Compile Include="Assets\Scripts\test_main.cs" />
+     <Compile Include="Assets\WeponCtl.cs" />
      <Compile Include="Assets\ls_xxx.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\ReadMe - 3.6.9.txt" />

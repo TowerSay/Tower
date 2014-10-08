@@ -37,6 +37,15 @@ public class RigBoxCtl : MonoBehaviour
 		rbc_slst.Remove(GetInstanceID());
 	}
 
+	
+	public Transform parent
+	{
+		get
+		{
+			return transform.parent;
+		} 
+	}
+
 	void Update () 
 	{
 		dev=transform.parent.localPosition-lastPos;
@@ -48,16 +57,22 @@ public class RigBoxCtl : MonoBehaviour
 	void OnTriggerStay(Collider csi) 
 	{
 		int id=csi.GetInstanceID();
-		//if(id!=this.GetInstanceID())
+		if(id!=this.GetInstanceID())
 		{
-			RigBoxCtl dbc=csi.GetComponent<RigBoxCtl>();
-			float rate=weight/dbc.weight;
 
-			Vector3 v3=(transform.parent.localPosition-csi.transform.parent.localPosition);
+			if(csi.tag=="RigBox" && this.tag=="RigBox")
+			{
+				RigBoxCtl dbc=csi.GetComponent<RigBoxCtl>();
+				float rate=weight/dbc.weight;
+				
+				Vector3 v3=(transform.parent.localPosition-csi.transform.parent.localPosition);
+				
+				dbc.f.CombineF(-v3.normalized*(speed+10f)*rate);
+			}
 
-			dbc.f.CombineF(-v3.normalized*(speed+10f)*rate);
-		//	Debug.Log(csi.name);
+			//Debug.Log(csi.name);
 		}
+
 	}
 
 

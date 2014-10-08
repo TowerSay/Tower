@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class CharaCtlFourFace : MonoBehaviour
 {
+	WeponCtl _wp;
 
 	UI2DSprite _spt;
 	AimMove _aimMove;
@@ -22,7 +23,10 @@ public class CharaCtlFourFace : MonoBehaviour
 	public Point id;
 
 	public int step=0;
-	
+
+	public bool atkState=false;
+	public float atkTimer=0;
+
 	///<summary>面向枚举<summary>
 	public enum FACE
 	{
@@ -30,6 +34,18 @@ public class CharaCtlFourFace : MonoBehaviour
 		RIGHT=2,
 		UP=3,
 		DOWN=0
+	}
+
+	public WeponCtl wp
+	{
+		get
+		{
+			if(_wp==null)
+			{
+				_wp=transform.Find("Wepon").GetComponent<WeponCtl>();
+			}
+			return _wp;
+		}
 	}
 
 	public UI2DSprite spt
@@ -119,6 +135,33 @@ public class CharaCtlFourFace : MonoBehaviour
 	void Update () 
 	{
 		spt.depth=-(int)transform.localPosition.y;
+		wp.spt.depth=spt.depth+1;
+
+
+		if(!atkState)
+		{
+			if(atkTimer>1f)
+			{
+				atkState=true;
+				atkTimer=0f;
+			}
+			else atkTimer+=Game.RealDeltaTime(true);
+		}
+		else
+		{
+
+			if(aim!=null)
+			{
+				float range= (this.transform.localPosition-aim.transform.localPosition).magnitude;
+				if(range<48f)
+				{
+					angle=aimMove.Angle;
+					wp.transform.localEulerAngles=new Vector3(0,0,360-angle);
+					wp.ani.Play("Atk");
+					atkState=false;
+				}
+			}
+		}
 
 
 
@@ -134,6 +177,10 @@ public class CharaCtlFourFace : MonoBehaviour
 		else
 		{
 			angle=aimMove.Angle;
+
+		
+
+
 			if(angle>45 && angle<=135)
 			{
 				SwapFace(FACE.RIGHT);
