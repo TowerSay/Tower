@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CamAimCtl.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
@@ -185,8 +186,8 @@
      <Compile Include="Assets\SGame\Scripts\AnimatiorHelp.cs" />
      <Compile Include="Assets\SGame\Scripts\AnimatorControlHelp.cs" />
      <Compile Include="Assets\SGame\Scripts\AtkBoxCtl.cs" />
-     <Compile Include="Assets\SGame\Scripts\CharaActControl.cs" />
-     <Compile Include="Assets\SGame\Scripts\CharaCtlFourFace.cs" />
+     <Compile Include="Assets\SGame\Scripts\CharaCtl\CharaActControl.cs" />
+     <Compile Include="Assets\SGame\Scripts\CharaCtl\CharaCtlFourFace.cs" />
      <Compile Include="Assets\SGame\Scripts\CharaInfo.cs" />
      <Compile Include="Assets\SGame\Scripts\DbAccess.cs" />
      <Compile Include="Assets\SGame\Scripts\DefBoxCtl.cs" />
@@ -204,17 +205,21 @@
      <Compile Include="Assets\SGame\Scripts\Sinoi.cs" />
      <Compile Include="Assets\SGame\Scripts\Socket\Socket.cs" />
      <Compile Include="Assets\SGame\Scripts\SpriteValueHelp.cs" />
+     <Compile Include="Assets\SGame\Scripts\UISpriteAutoLength.cs" />
      <Compile Include="Assets\Scripts\Chara.cs" />
+     <Compile Include="Assets\Scripts\InfoClass\CharaBaseInfo.cs" />
+     <Compile Include="Assets\Scripts\Others\ButtonMsgID.cs" />
+     <Compile Include="Assets\Scripts\Others\ButtonMsgObj.cs" />
+     <Compile Include="Assets\Scripts\PrefabControl\HpBindCharaCtl.cs" />
      <Compile Include="Assets\Scripts\PrefabControl\MsgBoxCtl.cs" />
      <Compile Include="Assets\Scripts\PrefabControl\RoomNodeCtl.cs" />
-     <Compile Include="Assets\Scripts\Private\ButtonMsgID.cs" />
-     <Compile Include="Assets\Scripts\Private\ButtonMsgObj.cs" />
      <Compile Include="Assets\Scripts\SceneRealTimeManager\BattleSRTM.cs" />
      <Compile Include="Assets\Scripts\SceneRealTimeManager\BattleSceneManager.cs" />
      <Compile Include="Assets\Scripts\SceneRealTimeManager\LoginSRTM.cs" />
      <Compile Include="Assets\Scripts\SceneRealTimeManager\MapSRTM.cs" />
      <Compile Include="Assets\Scripts\SceneRealTimeManager\SRTMBase.cs" />
      <Compile Include="Assets\Scripts\test_main.cs" />
+     <Compile Include="Assets\TimeLiving.cs" />
      <Compile Include="Assets\WeponCtl.cs" />
      <Compile Include="Assets\ls_xxx.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />

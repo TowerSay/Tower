@@ -4,7 +4,7 @@ using System.Collections;
 public class AtkBoxCtl : MonoBehaviour 
 {
 	public float f=100;
-	public float weight=20;
+	public float weight=50;
 
 
 	void Start () 
@@ -14,7 +14,7 @@ public class AtkBoxCtl : MonoBehaviour
 
 	void Update () 
 	{
-	
+		
 	}
 
 	public Transform parent
@@ -26,7 +26,7 @@ public class AtkBoxCtl : MonoBehaviour
 	}
 
 	//攻击检
-	void OnTriggerStay(Collider csi)
+	void OnTriggerEnter(Collider csi)
 	{
 
 		if(csi.tag=="RigBox" && this.tag=="AtkBox" )
@@ -41,13 +41,16 @@ public class AtkBoxCtl : MonoBehaviour
 				Vector3 v3=(parent.localPosition-dbc.parent.localPosition);
 
 				dbc.f.CombineF(-v3.normalized*f*10*rate);
-				Debug.Log(csi.name+":"+f);
+				//Debug.Log(csi.name+":"+f);
 
-				CharaCtlFourFace ccff=dbc.parent.GetComponent<CharaCtlFourFace>();
-				if(ccff!=null)
-				{
-					ccff.aim=parent;
-				}
+				CharaCtlFourFace emy=dbc.parent.GetComponent<CharaCtlFourFace>();
+				CharaCtlFourFace chr=parent.GetComponent<CharaCtlFourFace>();
+
+				chr.Atk(emy);
+
+
+				emy.aim=chr;
+
 			}
 		}
 

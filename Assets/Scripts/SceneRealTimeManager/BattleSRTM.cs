@@ -4,7 +4,9 @@ using System.Collections.Generic;
 public class BattleSRTM : SRTMBase
 {
 	public Transform charaPanel;
-	List<CharaCtlFourFace>chrs=new List<CharaCtlFourFace>();
+	public List<CharaCtlFourFace>chrs=new List<CharaCtlFourFace>();
+
+	public CamAimCtl camAim;
 
 	// Use this for initialization
 	void Start () 
@@ -22,13 +24,33 @@ public class BattleSRTM : SRTMBase
 			chr.aimMove.v=GameHelp.Random(10,100);
 			chr.rbc.weight=GameHelp.Random(100,200);
 
+			CharaBaseInfo info=new CharaBaseInfo();
+
+			info.HP=info.MaxHP=GameHelp.Random(100,200);
+			info.Atk=GameHelp.Random(10,20);
+			info.Def=GameHelp.Random(1,5);
+
+			chr.info=info;
+
 			chrs.Add(chr);
 		}
 
+		int ranId=GameHelp.Random(0,chrs.Count-1);
+
+		chrs[ranId].aimMove.v=200;
+		chrs[ranId].rbc.weight=100;
+
+		chrs[ranId].atkSpeed=2.5f;
+		chrs[ranId].info.Atk=30;
+		chrs[ranId].info.HP=chrs[ranId].info.MaxHP=200;
+
+		camAim.Aim(chrs[ranId].transform);
+
+		/*
 		foreach(CharaCtlFourFace chr in chrs)
 		{
 			chr.aim=chrs[GameHelp.Random(0,chrs.Count-1)].transform;
-		}
+		}*/
 
 	}
 	

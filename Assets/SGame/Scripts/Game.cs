@@ -29,6 +29,21 @@ public static class Game
 	/// <summary>游戏后台实时管理器</summary>
 	public static RealTimeManager RTM;
 
+	/// <summary>场景后台实时管理器</summary>
+	private static SRTMBase _SRTM;
+
+	/// <summary>取场景后台实时管理器</summary>
+	public static T SRTM<T>()where T : SRTMBase
+	{
+		if(_SRTM!=null && _SRTM.GetType()==typeof(T))
+		{
+			return (T)_SRTM;
+		}
+		else {_SRTM=GameObject.FindObjectOfType(typeof(T)) as SRTMBase;}
+
+		return (T)_SRTM;
+	}
+
 	/// <summary>获取某个资源管理器</summary>
 	public static ResManager ORM(string name,string basePath="Prefab")
 	{

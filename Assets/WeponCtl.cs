@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WeponCtl : MonoBehaviour {
+public class WeponCtl : MonoBehaviour 
+{
 
 	UI2DSprite _spt;
 	Animator _ani;
