@@ -131,7 +131,9 @@ public class CharaCtlFourFace : MonoBehaviour
 		}
 		else
 		{
-			if(timer>0.25f)
+			float rate=(100f/aimMove.v)*0.5f+0.5f;
+
+			if(timer>0.25f*rate)
 			{
 				timer=0;
 				step++;
@@ -197,7 +199,7 @@ public class CharaCtlFourFace : MonoBehaviour
 			go.transform.localScale=Vector3.one;
 
 			Destroy(this.gameObject);
-
+			Game.SRTM<BattleSRTM>().chrs.Remove(this);
 		}
 
 		if(aim!=null)
@@ -266,8 +268,13 @@ public class CharaCtlFourFace : MonoBehaviour
 			{
 				FindNewAim();
 
+				if(aim==null)
 				if(!aimMove.move)
-				aimMove.Aim(transform.localPosition+new Vector3(Random.Range(-50,50),Random.Range(-50,50),0),true);
+				{
+					aimMove.v=GameHelp.Random(50,80);
+					aimMove.Aim(transform.localPosition+new Vector3(Random.Range(-50,50),Random.Range(-50,50),0),true);
+				}
+
 			}
 
 

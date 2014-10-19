@@ -203,6 +203,7 @@
      <Compile Include="Assets\SGame\Scripts\SVA.cs" />
      <Compile Include="Assets\SGame\Scripts\ScriptInterpreter.cs" />
      <Compile Include="Assets\SGame\Scripts\Sinoi.cs" />
+     <Compile Include="Assets\SGame\Scripts\Socket\Pakage\SocketPakage.cs" />
      <Compile Include="Assets\SGame\Scripts\Socket\Socket.cs" />
      <Compile Include="Assets\SGame\Scripts\SpriteValueHelp.cs" />
      <Compile Include="Assets\SGame\Scripts\UISpriteAutoLength.cs" />
@@ -218,6 +219,9 @@
      <Compile Include="Assets\Scripts\SceneRealTimeManager\LoginSRTM.cs" />
      <Compile Include="Assets\Scripts\SceneRealTimeManager\MapSRTM.cs" />
      <Compile Include="Assets\Scripts\SceneRealTimeManager\SRTMBase.cs" />
+     <Compile Include="Assets\Scripts\System\P2PClient.cs" />
+     <Compile Include="Assets\Scripts\System\P2PServer.cs" />
+     <Compile Include="Assets\Scripts\System\TCPClient.cs" />
      <Compile Include="Assets\Scripts\test_main.cs" />
      <Compile Include="Assets\TimeLiving.cs" />
      <Compile Include="Assets\WeponCtl.cs" />
