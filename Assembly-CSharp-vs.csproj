@@ -211,6 +211,7 @@
      <Compile Include="Assets\Scripts\InfoClass\CharaBaseInfo.cs" />
      <Compile Include="Assets\Scripts\Others\ButtonMsgID.cs" />
      <Compile Include="Assets\Scripts\Others\ButtonMsgObj.cs" />
+     <Compile Include="Assets\Scripts\PrefabControl\ArrowCtl.cs" />
      <Compile Include="Assets\Scripts\PrefabControl\HpBindCharaCtl.cs" />
      <Compile Include="Assets\Scripts\PrefabControl\MsgBoxCtl.cs" />
      <Compile Include="Assets\Scripts\PrefabControl\RoomNodeCtl.cs" />

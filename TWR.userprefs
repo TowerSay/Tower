@@ -1,35 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\System\P2PServer.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SGame\Scripts\AtkBoxCtl.cs">
     <Files>
-      <File FileName="Assets\Scripts\SceneRealTimeManager\LoginSRTM.cs" Line="1" Column="1" />
-      <File FileName="Assets\SGame\Scripts\Socket\Socket.cs" Line="1" Column="1" />
-      <File FileName="Assets\SGame\Scripts\CharaCtl\CharaCtlFourFace.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SceneRealTimeManager\BattleSRTM.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PrefabControl\MsgBoxCtl.cs" Line="1" Column="1" />
-      <File FileName="Assets\SGame\Scripts\RealTimeManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\SGame\Scripts\Game.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Chara.cs" Line="1" Column="1" />
-      <File FileName="Assets\SGame\Scripts\PrefsSaveManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SceneRealTimeManager\LoginSRTM.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SceneRealTimeManager\SRTMBase.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SceneRealTimeManager\MapSRTM.cs" Line="1" Column="1" />
+      <File FileName="Assets\SGame\Scripts\CharaCtl\CharaCtlFourFace.cs" Line="227" Column="6" />
+      <File FileName="Assets\SGame\Scripts\AnimaEventHelp.cs" Line="30" Column="2" />
+      <File FileName="Assets\SGame\Scripts\CharaCtl\CharaCtlFourFace.cs" Line="302" Column="1" />
+      <File FileName="Assets\WeponCtl.cs" Line="63" Column="3" />
+      <File FileName="Assets\Scripts\SceneRealTimeManager\BattleSRTM.cs" Line="21" Column="36" />
       <File FileName="d:\Unity3d\TWR\Assets\SGame\Scripts\AimMove.cs" Line="1" Column="1" />
-      <File FileName="Assets\SGame\Scripts\ResManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\SGame\Scripts\GameStruct.cs" Line="1" Column="1" />
-      <File FileName="Assets\SGame\Scripts\DefBoxCtl.cs" Line="1" Column="1" />
-      <File FileName="Assets\SGame\Scripts\EasyPhysic\F.cs" Line="1" Column="1" />
-      <File FileName="Assets\SGame\Scripts\RigBoxCtl.cs" Line="1" Column="1" />
-      <File FileName="Assets\WeponCtl.cs" Line="1" Column="1" />
-      <File FileName="Assets\SGame\Scripts\AtkBoxCtl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PrefabControl\HpBindCharaCtl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\InfoClass\CharaBaseInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets\NGUI\Scripts\UI\UI2DSpriteAnimation.cs" Line="1" Column="1" />
-      <File FileName="Assets\TimeLiving.cs" Line="1" Column="1" />
-      <File FileName="Assets\CamAimCtl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\System\P2PServer.cs" Line="101" Column="3" />
-      <File FileName="Assets\Scripts\System\P2PClient.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\System\TCPClient.cs" Line="1" Column="1" />
+      <File FileName="Assets\SGame\Scripts\AnimatiorHelp.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PrefabControl\ArrowCtl.cs" Line="17" Column="3" />
+      <File FileName="Assets\SGame\Scripts\AtkBoxCtl.cs" Line="59" Column="6" />
+      <File FileName="Assets\SGame\Scripts\RigBoxCtl.cs" Line="24" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

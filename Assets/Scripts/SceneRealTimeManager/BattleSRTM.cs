@@ -12,6 +12,8 @@ public class BattleSRTM : SRTMBase
 	void Start () 
 	{
 		Game.CreateSpriteClipPack("Actor1",new Point(32,32));
+		Game.CreateSpriteClipPack("Wepon",new Point(24,24));
+
 		int max=8;
 		for(int i=0;i<max;i++)
 		{
@@ -31,6 +33,8 @@ public class BattleSRTM : SRTMBase
 			info.Def=GameHelp.Random(1,5);
 
 			chr.info=info;
+			chr.wp.atkType=(AtkType)GameHelp.Random(2,3);
+			chr.wp.RenewWepon();
 
 			chrs.Add(chr);
 		}

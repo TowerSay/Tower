@@ -9,8 +9,6 @@ public class CharaCtlFourFace : MonoBehaviour
 	/// <summary>基本角色信息</summary>
 	public CharaBaseInfo info;
 
-
-
 	WeponCtl _wp;
 
 	UI2DSprite _spt;
@@ -218,7 +216,60 @@ public class CharaCtlFourFace : MonoBehaviour
 		if(living)
 		{
 
-			angle=aimMove.Angle;
+			if(aim!=null)
+			{
+				Vector3 dis=aim.transform.localPosition-transform.localPosition;
+				Vector3 aimPos=aim.transform.localPosition;
+
+				if(wp.atkType==AtkType.Shooting)
+				{
+					aimPos=dis.normalized*(dis.magnitude-wp.atkRange);
+				}
+
+
+
+				aimMove.Aim(aimPos,true);
+
+				Vector2 v2=new Vector2(dis.x,dis.y);
+				angle=Vector2.Angle(Vector2.up,v2);if(dis.x<0){angle=360-angle;};
+				wp.RenewAngle(angle);
+
+				if(!atkState)
+				{
+					if(atkTimer>1f/atkSpeed)
+					{
+						atkState=true;
+						atkTimer=0f;
+					}
+					else atkTimer+=Game.RealDeltaTime(true);
+				}
+				else
+				{
+					float range=dis.magnitude;
+					//angle=aimMove.Angle;
+
+		
+					if(wp.CheckToAtk(range,atkSpeed))
+					{
+						atkState=false;
+					}
+				}
+			}
+			else
+			{
+				angle=aimMove.Angle;
+
+				FindNewAim();
+
+				if(aim==null)
+				if(!aimMove.move)
+				{
+					aimMove.v=GameHelp.Random(50,80);
+					aimMove.Aim(transform.localPosition+new Vector3(Random.Range(-50,50),Random.Range(-50,50),0),true);
+				}
+
+			}
+
 			
 			if(angle>45 && angle<=135)
 			{
@@ -236,48 +287,6 @@ public class CharaCtlFourFace : MonoBehaviour
 			{
 				SwapFace(FACE.UP);
 			}
-
-			if(aim!=null)
-			{
-				aimMove.Aim(aim.transform.localPosition,true);
-
-				if(!atkState)
-				{
-					if(atkTimer>1f/atkSpeed)
-					{
-						atkState=true;
-						atkTimer=0f;
-					}
-					else atkTimer+=Game.RealDeltaTime(true);
-				}
-				else
-				{
-					float range= (this.transform.localPosition-aim.transform.localPosition).magnitude;
-					if(range<48f)
-					{
-						angle=aimMove.Angle;
-						wp.transform.localEulerAngles=new Vector3(0,0,360-angle);
-						wp.ani.Play("Atk");
-						wp.ani.speed=atkSpeed;
-
-						atkState=false;
-					}
-				}
-			}
-			else
-			{
-				FindNewAim();
-
-				if(aim==null)
-				if(!aimMove.move)
-				{
-					aimMove.v=GameHelp.Random(50,80);
-					aimMove.Aim(transform.localPosition+new Vector3(Random.Range(-50,50),Random.Range(-50,50),0),true);
-				}
-
-			}
-
-
 
 
 

@@ -5,11 +5,21 @@ public class AtkBoxCtl : MonoBehaviour
 {
 	public float f=100;
 	public float weight=50;
+	public Transform parent;
+	public Transform root;
 
+	public string tagType;
 
 	void Start () 
 	{
-		
+		if(parent==null)
+		{
+			parent=this.transform;
+		}
+		if(root==null)
+		{
+			root=parent;
+		}
 	}
 
 	void Update () 
@@ -17,12 +27,12 @@ public class AtkBoxCtl : MonoBehaviour
 		
 	}
 
-	public Transform parent
+	void Base(RigBoxCtl rbc)
 	{
-		get
-		{
-			return transform.parent.parent.parent.parent;
-		} 
+		float rate=weight/rbc.weight;
+		Vector3 v3=(parent.localPosition-rbc.parent.localPosition);
+		rbc.f.CombineF(-v3.normalized*f*10*rate);
+
 	}
 
 	//攻击检
@@ -31,25 +41,33 @@ public class AtkBoxCtl : MonoBehaviour
 
 		if(csi.tag=="RigBox" && this.tag=="AtkBox" )
 		{
-			RigBoxCtl dbc=csi.GetComponent<RigBoxCtl>();
-			int id=dbc.parent.GetInstanceID();
-			if(id!=parent.GetInstanceID())
+			RigBoxCtl rbc=csi.GetComponent<RigBoxCtl>();
+			int id=rbc.parent.GetInstanceID();
+
+			if(id!=root.GetInstanceID())
 			{
+				CharaCtlFourFace emy=rbc.parent.GetComponent<CharaCtlFourFace>();
+				if(root!=null)
+				{
+					CharaCtlFourFace chr=root.GetComponent<CharaCtlFourFace>();
+					
+					if(chr!=null)
+					{
+						chr.Atk(emy);
+						emy.aim=chr;
+					}
+				}
 
-				float rate=weight/dbc.weight;
-				
-				Vector3 v3=(parent.localPosition-dbc.parent.localPosition);
+				if(tagType=="Chara" && rbc.tagType=="Chara")
+				{
 
-				dbc.f.CombineF(-v3.normalized*f*10*rate);
-				//Debug.Log(csi.name+":"+f);
-
-				CharaCtlFourFace emy=dbc.parent.GetComponent<CharaCtlFourFace>();
-				CharaCtlFourFace chr=parent.GetComponent<CharaCtlFourFace>();
-
-				chr.Atk(emy);
-
-
-				emy.aim=chr;
+					Base(rbc);
+				}
+				else if(tagType=="Arrow" && rbc.tagType=="Chara")
+				{
+					Base(rbc);
+					parent.SendMessage("OnAtk",emy,SendMessageOptions.DontRequireReceiver);
+				}
 
 			}
 		}

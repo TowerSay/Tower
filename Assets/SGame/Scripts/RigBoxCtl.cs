@@ -21,7 +21,7 @@ public class RigBoxCtl : MonoBehaviour
 
 	/// <summary> 帧位移 </summary>
 	Vector3 dev;
-
+	public string tagType;
 
 	void Start () 
 	{
